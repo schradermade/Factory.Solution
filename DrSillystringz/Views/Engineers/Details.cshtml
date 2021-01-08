@@ -6,9 +6,9 @@
 
 <h2>Engineer Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.EngineerName): @Htmll.DisplayFor(model => model.EngineerName)</h3>
+<h3>@Html.DisplayNameFor(model => model.EngineerName): @Html.DisplayFor(model => model.EngineerName)</h3>
 
-@if (@Model.Engineers.Count == 0)
+@if (@Model.Machines.Count == 0)
 {
   <p>This Engineer does not have any machines assigned to them.</p>
 }
@@ -16,7 +16,7 @@ else
 {
   <h4>Machines this Engineer is assigned to maintain</h4>
   <ul>
-    @foreach (var join in ModuleHandle.Machines)
+    @foreach (var join in Model.Machines)
     {
       <li>@join.Machine.MachineName</li>
       <li>@join.Machine.MachineId</li>

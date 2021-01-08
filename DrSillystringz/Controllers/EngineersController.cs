@@ -56,7 +56,7 @@ namespace DrSillystringz.Controllers
           .Include(engineer => engineer.Machines)
           .ThenInclude(join => join.Machine)
           .FirstOrDefault(engineer => engineer.EngineerId == id);
-      return view(thisEngineer);
+      return View(thisEngineer);
     }
 
   }

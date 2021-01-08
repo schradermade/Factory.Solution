@@ -7,7 +7,7 @@ namespace DrSillystringz.Models
   {
     public Engineer()
     {
-      this.Machines = new Hashset<EngineerMachine>();
+      this.Machines = new HashSet<EngineerMachine>();
     }
 
     public int EngineerId { get; set; }

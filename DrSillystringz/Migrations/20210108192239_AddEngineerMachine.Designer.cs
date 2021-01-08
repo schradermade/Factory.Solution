@@ -2,14 +2,16 @@
 using DrSillystringz.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DrSillystringz.Migrations
 {
     [DbContext(typeof(DrSillystringzContext))]
-    partial class DrSillystringzContextModelSnapshot : ModelSnapshot
+    [Migration("20210108192239_AddEngineerMachine")]
+    partial class AddEngineerMachine
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
