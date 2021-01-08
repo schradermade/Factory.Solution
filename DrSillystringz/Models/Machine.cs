@@ -7,11 +7,11 @@ namespace DrSillystringz.Models
   {
     public Machine()
     {
-      this.Engineer = new HashSet<EngineerMachine>();
+      this.Engineers = new HashSet<EngineerMachine>();
     }
 
     public int MachineId { get; set; }
     public string MachineName { get; set; }
-    public ICollection<EngineerMachine> Engineer { get; }
+    public ICollection<EngineerMachine> Engineers { get; }
   }
 }
