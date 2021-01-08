@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DrSillystringz.Models.Machine
+
+<h4>Put machine into operation</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.MachineName)
+  @Html.TextBoxFor(model => model.MachineName)
+  <input type="submit" value="Add a new machine" />
+}
+
+<p>@Html.ActionLink("Show all machines", "Index")</p>
