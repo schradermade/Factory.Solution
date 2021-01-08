@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 namespace DrSillystringz.Models
 {
   public class Engineer
-  }
+  {
     public Engineer()
     {
       //this.Machines = new Hashset<EngineerMachine>();
@@ -13,7 +13,7 @@ namespace DrSillystringz.Models
     public int EngineerId { get; set; }
     public string EngineerName { get; set; }
     public string Specialty { get; set; }
-    public virtual ICollection<EngineerMachine> Machines { get; set; }
+    //public virtual ICollection<EngineerMachine> Machines { get; set; }
 
   }
 }

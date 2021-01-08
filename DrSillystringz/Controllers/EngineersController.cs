@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DrSillystringz.Controllers
 {
-  public class EngineersController : Controllers
+  public class EngineersController : Controller
   {
     private readonly DrSillystringzContext _db;
 
@@ -22,6 +22,6 @@ namespace DrSillystringz.Controllers
       return View(model);
     }
 
-    
+
   }
 }
