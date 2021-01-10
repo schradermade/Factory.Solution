@@ -4,17 +4,22 @@
 
 @model DrSillystringz.Models.Machine
 
-<h2>Edit</h2>
-
-<h4>Edit this Machine: @Html.DisplayFor(model => model.MachineName)</h4>
-
+<h2>Edit this Machine: @Html.DisplayFor(model => model.MachineName)</h2>
+<br>
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.MachineId)
-
-    @Html.LabelFor(model => model.MachineName)
-    @Html.EditorFor(model => model.MachineName)
-
-    <input type="submit" value="Save" />
+  @Html.HiddenFor(model => model.MachineId)
+  <br>
+  @Html.LabelFor(model => model.MachineName)
+  <br>
+  @Html.EditorFor(model => model.MachineName)
+  <br><br>
+  @Html.Label("Assign Engineer to this Machine")
+  <br>
+  @Html.DropDownList("EngineerId")
+  <br><br><br><br>
+  <input type="submit" value="Confirm Changes" class="btn btn-success" />
 }
+<br><br><br><br>
+<p><strong>Go To..</strong></p>
 <p>@Html.ActionLink("Back to Machines", "Index")</p>

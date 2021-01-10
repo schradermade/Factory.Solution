@@ -4,12 +4,26 @@
 
 @model DrSillystringz.Models.Machine
 
-<h4>Put machine into operation</h4>
+<h2><strong>Place a Machine into Operation:</strong></h2>
+<hr />
+<br><br><br>
+
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.MachineName)
+  @Html.Label("Name of Machine")
+  <br>
   @Html.TextBoxFor(model => model.MachineName)
-  <input type="submit" value="Add a new machine" />
+
+  @Html.HiddenFor(model => model.MachineId)
+  <br><br>
+  @Html.Label("Assign Engineer to this Machine")
+  <br>
+  @Html.DropDownList("EngineerId")
+  <br><br><br><br><br>
+  <input type="submit" value="Add a new machine" class="btn btn-success" />
 }
 
+
+<hr />
+<h3><strong>Go To..</strong></h3>
 <p>@Html.ActionLink("Show all machines", "Index")</p>
