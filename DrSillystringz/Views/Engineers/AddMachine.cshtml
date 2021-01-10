@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DrSillystringz.Models.Engineer
+
+<h2>Add a Machine</h2>
+
+<h4>Assign a machine to this Engineer: @Html.DisplayFor(model => model.MachineName)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.EngineerId)
+
+  @Html.Label("Select Machine")
+  @Html.DropDownList("MachineId")
+
+  <input type="submit" value="Assign" />
+}
+
+<p>@Html.ActionLink("Back to List", "Index")</p>
