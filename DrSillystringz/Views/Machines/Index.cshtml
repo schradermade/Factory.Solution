@@ -5,9 +5,8 @@
 @using DrSillystringz.Models;
 @model List<DrSillystringz.Models.Machine>;
 
-<h1>Machines currently in operation:</h1>
+<h1>Machines In Operation:</h1>
 
-<br>
 <hr />
 
 @if (@Model.Count == 0)
@@ -15,14 +14,26 @@
   <h3>No Machines are currently in service.</h3>
 }
 
-@foreach (Machine machine in Model)
-{
-  <li>@Html.ActionLink($"{machine.MachineName}", "Details", new { id = machine.MachineId })</li>
-}
+<ul style="list-style-type: none;">
+  @foreach (Machine machine in Model)
+  {
+    <li>Machine Name: @Html.ActionLink($"{machine.MachineName}", "Details", new { id = machine.MachineId })
+        <br>
+        Machine Id: @Html.DisplayFor(model => machine.MachineId)
+    </li>
+    <hr />
+  }
+</ul>
 
 <br>
-<hr />
 
 <p><strong>Go To..</strong></p>
 <p>@Html.ActionLink("Add machine to factor floor", "Create")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+@* {
+      <hr />
+      <li><strong>Engineer Name: </strong>@join.Engineer.EngineerName </li>
+      <li><strong>Engineer ID:</strong> @join.Engineer.EngineerId</li>
+      <hr />
+    } *@

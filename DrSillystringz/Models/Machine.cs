@@ -8,10 +8,12 @@ namespace DrSillystringz.Models
     public Machine()
     {
       this.Engineers = new HashSet<EngineerMachine>();
+      // this.EngineerMachineId = new HashSet<EngineerMachine>();
     }
 
     public int MachineId { get; set; }
     public string MachineName { get; set; }
-    public ICollection<EngineerMachine> Engineers { get; }
+    public virtual ICollection<EngineerMachine> Engineers { get; }
+    // public ICollection<EngineerMachine> EngineerMachineId { get; set; }
   }
 }

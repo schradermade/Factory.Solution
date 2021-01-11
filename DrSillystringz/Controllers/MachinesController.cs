@@ -50,8 +50,11 @@ namespace DrSillystringz.Controllers
 
     public ActionResult Edit(int id)
     {
-      var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
       ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "EngineerName");
+      var thisMachine = _db.Machines
+          .Include(machine => machine.Engineers)
+          .ThenInclude(join => join.Engineer)
+          .FirstOrDefault(machine => machine.MachineId == id);
       return View(thisMachine);
     }
 

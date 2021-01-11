@@ -6,6 +6,7 @@
 
 <h2>Edit this Machine: @Html.DisplayFor(model => model.MachineName)</h2>
 <br>
+
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.MachineId)
@@ -13,13 +14,49 @@
   @Html.LabelFor(model => model.MachineName)
   <br>
   @Html.EditorFor(model => model.MachineName)
+
   <br><br>
-  @Html.Label("Assign Engineer to this Machine")
-  <br>
-  @Html.DropDownList("EngineerId")
-  <br><br><br><br>
+  // List assigned engineers
+  @if (@Model.Engineers.Count == 0)
+  {
+    <p>No Engineers assigned.</p>
+    @Html.Label("Assign Active Engineer to this Machine")
+    <br>
+    @Html.DropDownList("EngineerId")
+  }
+  else
+  {
+    <h4>Engineer(s) assigned to this machine:</h4>
+    <ul style="list-style-type: none;">
+      @foreach (var join in Model.Engineers)
+      {
+        <br>
+        <li><strong>Engineer Name: </strong>@join.Engineer.EngineerName</li>
+        <li><strong>Engineer ID:</strong> @join.Engineer.EngineerId</li>
+        <br>
+        @* @using (Html.BeginForm("DeleteEngineer", "Machines"))
+        {
+          @Html.Hidden("joinId", @join.EngineerMachineId)
+          <input type="submit" value="Delete Engineer"/>
+        } *@
+        @* <p>@Html.ActionLink("Delete This Engineer", "DeleteEngineer", "Machines", new { id = @join.EngineerId })</p> *@
+        <hr />
+      }
+    </ul>
+
+    <br>
+    // Assign an engineer
+    @Html.Label("Assign Active Engineer to this Machine")
+    <br>
+    @Html.DropDownList("EngineerId")
+    <br><br><br><br>
+  }
+  <br><br>
   <input type="submit" value="Confirm Changes" class="btn btn-success" />
 }
-<br><br><br><br>
+
+<br><br><br>
+<hr />
+
 <p><strong>Go To..</strong></p>
 <p>@Html.ActionLink("Back to Machines", "Index")</p>
