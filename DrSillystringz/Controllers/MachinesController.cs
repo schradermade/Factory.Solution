@@ -22,9 +22,20 @@ namespace DrSillystringz.Controllers
       return View(model);
     }
 
-    public ActionResult Create()
+public ActionResult Create()
     {
-      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "EngineerName");
+      var listEngineers = new List<Engineer>()
+      {
+        new Engineer()
+        {
+          EngineerId = 0,
+          EngineerName = "--Select a value--"
+        }
+      };
+
+      listEngineers.AddRange(_db.Engineers);
+
+      ViewBag.EngineerId = new SelectList(listEngineers, "EngineerId", "EngineerName");
       return View();
     }
 
