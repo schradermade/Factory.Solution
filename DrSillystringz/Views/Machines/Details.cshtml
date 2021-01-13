@@ -5,8 +5,7 @@
 @model DrSillystringz.Models.Machine;
 
 <h2>Machine Details:</h2>
-<h4>@Html.DisplayFor(model => model.MachineName)</h4>
-<hr />
+<h4>@Html.DisplayFor(model => model.MachineName)</h4><hr />
 
 @if (@Model.Engineers.Count == 0)
 {
@@ -19,8 +18,8 @@ else
     @foreach (var join in Model.Engineers)
     {
       <hr />
-      <li><strong>Engineer Name: </strong>@join.Engineer.EngineerName </li>
-      <li><strong>Engineer ID:</strong> @join.Engineer.EngineerId</li>
+      <li><strong>Engineer Name: </strong>@Html.ActionLink($"{join.Engineer.EngineerName}", "Details", "Engineers", new { id = join.Engineer.EngineerId })</li>
+      <li><strong>Engineer ID: </strong> @join.Engineer.EngineerId</li>
       <hr />
     }
   </ul>
@@ -36,3 +35,5 @@ else
 
 <h4><strong>Go To..</strong></h4>
 <p>@Html.ActionLink("Back to Machines", "Index")</p>
+<p>@Html.ActionLink("View All Engineers", "Index", "Engineers")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

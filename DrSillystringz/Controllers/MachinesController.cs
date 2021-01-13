@@ -32,10 +32,9 @@ public ActionResult Create()
           EngineerName = "--Select a value--"
         }
       };
-
       listEngineers.AddRange(_db.Engineers);
-
       ViewBag.EngineerId = new SelectList(listEngineers, "EngineerId", "EngineerName");
+
       return View();
     }
 
@@ -61,7 +60,16 @@ public ActionResult Create()
 
     public ActionResult Edit(int id)
     {
-      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "EngineerName");
+      var listEngineers = new List<Engineer>()
+      {
+        new Engineer()
+        {
+          EngineerId = 0,
+          EngineerName = "--Select a value--"
+        }
+      };
+      listEngineers.AddRange(_db.Engineers);
+      ViewBag.EngineerId = new SelectList(listEngineers, "EngineerId", "EngineerName");
       var thisMachine = _db.Machines
           .Include(machine => machine.Engineers)
           .ThenInclude(join => join.Engineer)
