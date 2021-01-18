@@ -3,23 +3,40 @@
 }
 
 @using DrSillystringz.Models;
-@model List<DrSillystringz.Models.Machine>;
 
 <h1>Welcome to the Sillystringz Factory Floor!</h1>
 
 <h1>Machines Currently In Operation:</h1><hr />
 
-@if (@join.EngineerMachineId.Count == 0)
+@if (@Model["Machine"].Count == 0)
 {
   <h3>No Machines are currently in service.</h3>
 }
 
 <ul style="list-style-type: none;">
-  @foreach (Machine machine in Model)
+  @foreach (Machine machine in @Model["Machine"])
   {
     <li>Machine Name: @Html.ActionLink($"{machine.MachineName}", "Details", new { id = machine.MachineId })
         <br>
         Machine Id: @Html.DisplayFor(model => machine.MachineId)
+    </li>
+    <hr />
+  }
+</ul>
+
+<h1>Engineers Currently employed:</h1><hr />
+
+@if (@Model["Engineer"].Count == 0)
+{
+  <h3>No Engineers to list.</h3>
+}
+
+<ul style="list-style-type: none;">
+  @foreach (Engineer engineer in @Model["Engineer"])
+  {
+    <li>Engineer Name: @Html.ActionLink($"{engineer.EngineerName}", "Details", new { id = engineer.EngineerId })
+        <br>
+        Engineer Id: @Html.DisplayFor(model => engineer.EngineerId)
     </li>
     <hr />
   }

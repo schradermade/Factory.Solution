@@ -89,6 +89,7 @@ public ActionResult Create()
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+    
     public ActionResult Delete(int id)
     {
       var thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);

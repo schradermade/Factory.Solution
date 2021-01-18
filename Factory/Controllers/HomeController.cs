@@ -18,8 +18,9 @@ namespace DrSillystringz.Controllers
     [HttpGet("/")]
     public ActionResult Index()
     {
-      var machineList = _db.Machines.ToList();
-      var engineerList = _db.Engineers.ToList();
+      List<Machine> machineList = _db.Machines.ToList();
+      List<Engineer> engineerList = _db.Engineers.ToList();
+      
       Dictionary<string, object> myDictionary = new Dictionary<string, object> ();
       myDictionary.Add("Machine", machineList);
       myDictionary.Add("Engineer", engineerList);

@@ -4,17 +4,50 @@
 
 @model DrSillystringz.Models.Engineer
 
-<h2>Edit</h2>
-
-<h4>Edit this Engineer: @Html.DisplayFor(model => model.EngineerName)</h4>
+<h2>Edit this Engineer: @Html.DisplayFor(model => model.EngineerName)</h2><br>
 
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.EngineerId)
+  @Html.HiddenFor(model => model.EngineerId)<br>
 
-    @Html.LabelFor(model => model.EngineerName)
-    @Html.EditorFor(model => model.EngineerName)
+  @Html.Label("Engineer Name:")<br>
 
-    <input type="submit" value="Save" />
+  @Html.EditorFor(model => model.EngineerName)<br><br>
+
+
+  @Html.Label("Assign Active Machines to this Engineer:")<br>
+  @Html.DropDownList("MachineId")<br><br><br><br>
+  
+  <input type="submit" value="Confirm Changes" class="btn btn-success" />
 }
+  <br><br>
+
+  @if (@Model.Machines.Count == 0)
+  {
+    <p>No Machines assigned.</p>
+  }
+  else
+  {
+    <h4>Machines(s) currently assigned to this engineer:</h4>
+    <ul style="list-style-type: none;">
+      @foreach (var join in Model.Machines)
+      {
+        <br>
+        <li><strong>Machine Name: </strong>@join.Engineer.EngineerName</li>
+        <li><strong>Machine ID:</strong> @join.Machine.MachineId</li>
+        <br>
+        @using (Html.BeginForm("DeleteMachine", "Engineers"))
+        {
+          @Html.Hidden("joinId", @join.EngineerMachineId)
+          <input type="submit" value="Delete Machine"/>
+        }
+        <hr />
+      }
+    </ul>
+  }
+<br><hr />
+
+<p><strong>Go To..</strong></p>
 <p>@Html.ActionLink("Back to Engineers", "Index")</p>
+<p>@Html.ActionLink("View all Machines", "Index", "Machines")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
