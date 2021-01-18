@@ -16,7 +16,7 @@
 <ul style="list-style-type: none;">
   @foreach (Machine machine in @Model["Machine"])
   {
-    <li>Machine Name: @Html.ActionLink($"{machine.MachineName}", "Details", new { id = machine.MachineId })
+    <li>Machine Name: @Html.ActionLink($"{machine.MachineName}", "Details", "Machines", new { id = machine.MachineId })
         <br>
         Machine Id: @Html.DisplayFor(model => machine.MachineId)
     </li>
@@ -34,7 +34,7 @@
 <ul style="list-style-type: none;">
   @foreach (Engineer engineer in @Model["Engineer"])
   {
-    <li>Engineer Name: @Html.ActionLink($"{engineer.EngineerName}", "Details", new { id = engineer.EngineerId })
+    <li>Engineer Name: @Html.ActionLink($"{engineer.EngineerName}", "Details", "Engineers", new { id = engineer.EngineerId })
         <br>
         Engineer Id: @Html.DisplayFor(model => engineer.EngineerId)
     </li>
